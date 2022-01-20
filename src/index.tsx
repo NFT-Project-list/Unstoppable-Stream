@@ -77,7 +77,7 @@ const Login: React.FC<RouteProps> = props => {
     <>
     <div className='flex justify-center relative top-44 items-center align-middle'>
       <div>
-        <h1 className='font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-blue-800 to-pink-600 text-8xl align-middle flex justify-center items-center'>UNSTOPPABLE STREAM</h1>
+        <h1 className='font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-pink-600 text-8xl align-middle flex justify-center items-center'>UNSTOPPABLE STREAM</h1>
         
           <br/>
           <br/>
