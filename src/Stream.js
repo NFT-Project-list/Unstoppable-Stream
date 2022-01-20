@@ -284,7 +284,7 @@ export default function Stream() {
                       <>
                         <br />
 
-                        <ReactPlayer controls url={stream} playing={true} />
+                        <ReactPlayer controls url={`https://cdn.livepeer.com/hls/${data.playbackId}/index.m3u8`} playing={true} />                      
                         <br />
                         <a
                         rel="noreferrer"
