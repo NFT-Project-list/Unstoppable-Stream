@@ -178,7 +178,7 @@ const Profile: React.FC<RouteProps> = () => {
         
     <div className = "overflow-visible">
       <div className='flex flex-row'>
-    <Button variant="contained" color="primary"  onClick={handleLogoutButtonClick} className="w-28">Logout</Button>
+    <Button variant="outlined" color="primary"  onClick={handleLogoutButtonClick} className="w-28">Logout</Button>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
     <p className='text-xl '>Logged in as:<strong> {user.sub} </strong> with the address: <strong> {user.wallet_address} </strong></p>
     
