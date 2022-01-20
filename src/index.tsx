@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom'
 //import './index.css'
 import './styles/globals.css'
+// eslint-disable-next-line 
 import UAuth from '@uauth/js'
 import { Button } from '@material-ui/core';
 import React, {useEffect, useState} from 'react'
@@ -17,20 +18,19 @@ require('dotenv').config();
 
 const uauth = new UAuth({
   // These can be copied from the bottom of your app's configuration page on unstoppabledomains.com.
-  clientID: "Pyy8lfCR7WXL8ujQdt284FOCC74WVZwqUpFymTDWeDI=",
-  clientSecret: "l3EuNDc1QzCzFDnB4TgA/Qu5uNVOCtUJvsAxZz/Jpsg=",
+  clientID: "E3TV8fEapWmt8oRcC5QZQoFZRCI5yKjRqwbpy2RP7rg="!,
+  clientSecret: "YvAjnvttSgXYWaY/qFV1kgdAxCxBzfXWSXOAeb0o6/c="!,
 
   // These are the scopes your app is requesting from the ud server.
-  scope: 'openid email wallet',
+  scope: "openid email wallet",
 
   // This is the url that the auth server will redirect back to after every authorization attempt.
-  redirectUri: 'https://3000-0xpr0f-unstoppablestre-1dbgew0p1se.ws-eu27.gitpod.io/callback',
+  redirectUri: "https://0xpr0f-unstoppablestre-7coen3tdkgz.ws-eu27.gitpod.io/callback"!,
 
   // This is the url that the auth server will redirect back to after logging out.
-  postLogoutRedirectUri: 'https://3000-0xpr0f-unstoppablestre-1dbgew0p1se.ws-eu27.gitpod.io/login',
+  postLogoutRedirectUri: "https://0xpr0f-unstoppablestre-7coen3tdkgz.ws-eu27.gitpod.io/login"!
 })
-console.log(process.env)
-console.log(process.env.REACT_APP_CLIENT_ID)
+
 const Home: React.FC<RouteProps> = props => {
   const [redirectTo, setRedirectTo] = useState<string>()
 

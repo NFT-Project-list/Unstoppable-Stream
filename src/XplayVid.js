@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactPlayer from "react-player";
 import Head from "next/head";
 import { Button } from "@material-ui/core";

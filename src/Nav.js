@@ -1,6 +1,6 @@
 //import './styles/global.css'
 import { Link, BrowserRouter, Route, Switch } from "react-router-dom";
-
+import Stream from "./Stream";
 import XplayVids from "./XplayVid";
 
 function Navhan() {
@@ -28,11 +28,19 @@ function Navhan() {
             >
               Play Vids
             </Link>
+            <Link
+              style={{ padding: "0rem 3rem" }}
+              className="text-0.05px text-blue-500 md:text-0.01px"
+              to="./Stream"
+            >
+              Stream
+            </Link>
           </div>
         </div>
         <div>
           <Switch>
             <Route path="/XplayVid" component={XplayVids} exact></Route>
+            <Route path="/Stream" component={Stream} ></Route>
           </Switch>
         </div>
       </BrowserRouter>
