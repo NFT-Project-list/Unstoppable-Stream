@@ -17,19 +17,20 @@ require('dotenv').config();
 
 const uauth = new UAuth({
   // These can be copied from the bottom of your app's configuration page on unstoppabledomains.com.
-  clientID: 'H1Op36AGtJTwpj/ESzQoiB/76tfIJZigO+eAtIsfxE4=',
-  clientSecret:'6kG7lj2JkH7qHUwPRq9sYHQvBodpsifEX91twsj2yi4=',//process.env.REACT_APP_CLIENT_SECRET,
+  clientID: "Pyy8lfCR7WXL8ujQdt284FOCC74WVZwqUpFymTDWeDI=",
+  clientSecret: "Vd08dO42oFVyQxyBdxNmO4FYVsQtEWCdBtng33K6wrs=",//process.env.REACT_APP_CLIENT_SECRET,
 
   // These are the scopes your app is requesting from the ud server.
   scope: 'openid email wallet ',
 
   // This is the url that the auth server will redirect back to after every authorization attempt.
-  redirectUri: 'https://3000-brown-albatross-vrxpr950.ws-eu21.gitpod.io/callback',
+  redirectUri: 'https://3000-0xpr0f-unstoppablestre-1dbgew0p1se.ws-eu27.gitpod.io/callback',
 
   // This is the url that the auth server will redirect back to after logging out.
-  postLogoutRedirectUri: 'https://3000-brown-albatross-vrxpr950.ws-eu21.gitpod.io/login',
+  postLogoutRedirectUri: 'https://3000-0xpr0f-unstoppablestre-1dbgew0p1se.ws-eu27.gitpod.io/',
 })
-
+console.log(process.env)
+console.log(process.env.REACT_APP_CLIENT_ID)
 const Home: React.FC<RouteProps> = props => {
   const [redirectTo, setRedirectTo] = useState<string>()
 
@@ -74,40 +75,25 @@ const Login: React.FC<RouteProps> = props => {
 
   return (
     <>
-    <div className='flex justify-center items-center'>
+    <div className='flex justify-center relative top-40 items-center align-middle'>
       <div>
-        <h1 className='text-4xl flex justify-center items-center'><u>UNSTOPPABLE NFT</u></h1>
-        <br></br>
-        <br></br>
-        <div className="text-2xl ">
-        <br></br>
-          <li>&nbsp; Welocme to Unstoppable NFT. </li>
-          <br></br>
-          <li>&nbsp; Inspired by token-gating,This is a Domain-Gated Application. </li>
-          <br></br>
-          <li>&nbsp; Were the application can only be accessed by any body  </li>
+        <h1 className='font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-blue-800 to-pink-600 text-8xl align-middle flex justify-center items-center'>UNSTOPPABLE STREAM</h1>
+        
           
-          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; with a valid UNSTOPPABLE DOMAIN name. </p>
-          <br></br>
-          <li>&nbsp;If you dont have one you can head <a href='https://unstoppabledomains.com/'>here!</a> to purchase one. </li>
-          <br></br>
-          <li> &nbsp;If you do have one, login in with unstoppable and join the fun.</li>
-          <br></br>
-      <br></br>
       </div>
       </div>
       <br></br>
-    </div>
-    <div className='flex flex-wrap justify-center items-center '>
+  
+    <div className=' relative top-52 flex justify-center items-center '>
     <br></br>
     {errorMessage && <div>Message: {errorMessage}</div>}
     <br></br>
     </div>
     
-     <div className='flex flex-wrap justify-center items-center '>
+     <div className='flex flex-wrap relative top-52 justify-center items-center '>
      <br></br>
      <br></br>
-    <Button variant="contained" color="primary"  onClick={handleLoginButtonClick} className="">Login with Unstoppable</Button>
+    <Button size='large' variant="outlined" style={{maxWidth: '400px',position:"fixed", maxHeight: '50px'}} color="primary"  onClick={handleLoginButtonClick} ><p className="text-2xl">Login with Unstoppable</p></Button>
     </div>
     </>
   )
