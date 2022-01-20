@@ -18,16 +18,16 @@ require('dotenv').config();
 const uauth = new UAuth({
   // These can be copied from the bottom of your app's configuration page on unstoppabledomains.com.
   clientID: "Pyy8lfCR7WXL8ujQdt284FOCC74WVZwqUpFymTDWeDI=",
-  clientSecret: "Vd08dO42oFVyQxyBdxNmO4FYVsQtEWCdBtng33K6wrs=",//process.env.REACT_APP_CLIENT_SECRET,
+  clientSecret: "l3EuNDc1QzCzFDnB4TgA/Qu5uNVOCtUJvsAxZz/Jpsg=",
 
   // These are the scopes your app is requesting from the ud server.
-  scope: 'openid email wallet ',
+  scope: 'openid email wallet',
 
   // This is the url that the auth server will redirect back to after every authorization attempt.
   redirectUri: 'https://3000-0xpr0f-unstoppablestre-1dbgew0p1se.ws-eu27.gitpod.io/callback',
 
   // This is the url that the auth server will redirect back to after logging out.
-  postLogoutRedirectUri: 'https://3000-0xpr0f-unstoppablestre-1dbgew0p1se.ws-eu27.gitpod.io/',
+  postLogoutRedirectUri: 'https://3000-0xpr0f-unstoppablestre-1dbgew0p1se.ws-eu27.gitpod.io/login',
 })
 console.log(process.env)
 console.log(process.env.REACT_APP_CLIENT_ID)
@@ -75,24 +75,24 @@ const Login: React.FC<RouteProps> = props => {
 
   return (
     <>
-    <div className='flex justify-center relative top-40 items-center align-middle'>
+    <div className='flex justify-center relative top-44 items-center align-middle'>
       <div>
         <h1 className='font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-blue-800 to-pink-600 text-8xl align-middle flex justify-center items-center'>UNSTOPPABLE STREAM</h1>
         
-          
+          <br/>
+          <br/>
+          <br/>
       </div>
       </div>
       <br></br>
   
-    <div className=' relative top-52 flex justify-center items-center '>
-    <br></br>
-    {errorMessage && <div>Message: {errorMessage}</div>}
-    <br></br>
+    <div className='relative top-44 flex justify-center items-center '>
+
+    {errorMessage && <div className='mb-3' style={{position : "fixed"}}><strong>Message:</strong> {errorMessage} <br/></div>}
+   
     </div>
     
      <div className='flex flex-wrap relative top-52 justify-center items-center '>
-     <br></br>
-     <br></br>
     <Button size='large' variant="outlined" style={{maxWidth: '400px',position:"fixed", maxHeight: '50px'}} color="primary"  onClick={handleLoginButtonClick} ><p className="text-2xl">Login with Unstoppable</p></Button>
     </div>
     </>
