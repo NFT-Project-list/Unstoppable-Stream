@@ -1,7 +1,8 @@
 import React from "react";
 import ReactPlayer from "react-player";
-import Head from "next/head";
 import { Button } from "@material-ui/core";
+import Head from "next/head";
+import { AiFillFastForward } from "react-icons/ai";
 
 class XplayVids extends React.Component {
   constructor(props) {
@@ -25,35 +26,33 @@ class XplayVids extends React.Component {
   render() {
     return (
       <>
-        <Head>
-          <title>MetaX | playvid</title>
-        </Head>
-        <div
-          id="reactPlayer"
-          className="reactPlayer overflow-x-hidden overflow-y-hidden"
-        >
-          <header classame="ReactP">
-            <div>
+        <div id="reactPlayer" className="grid place-items-center reactPlayer">
+          <header classame="grid place-items-center ReactP">
+            <div className="grid place-items-center ">
               <form onSubmit={this.handleSubmit}>
                 <input
                   onChange={this.handleChange}
                   required
                   style={{
-                    margin: "35px",
                     width: "310px",
                     height: "50px",
                   }}
-                  className="mt-2 border rounded p-5"
+                  className="border rounded p-3"
                   type="text"
                   placeholder="Input video URL"
                 />
                 <Button
-                  variant="contained"
+                  onClick={this.handleSubmit}
+                  variant="outlined"
                   color="primary"
                   style={{
+                    color: "#fff",
+                    backgroundImage:
+                      "linear-gradient(to right,#3f50b5,#cf2a7b)",
+
                     margin: "40px",
                   }}
-                  className="overflow-x-hidden overflow-y-hidden hover:bg-black-500 rounded bg-blue-600 py-2 px-12 text-white m-16"
+                  className="rounded py-2 px-12"
                 >
                   Play Video
                 </Button>
@@ -80,6 +79,8 @@ class XplayVids extends React.Component {
               </p>
             </div>
             <ReactPlayer
+              playIcon={30}
+              playing
               width="700px"
               height="400px"
               style={{

@@ -1,21 +1,22 @@
-import ReactDOM from 'react-dom'
+import ReactDOM from "react-dom";
 //import './index.css'
-import './styles/globals.css'
-// eslint-disable-next-line 
-import UAuth from '@uauth/js'
-import { Button } from '@material-ui/core';
-import React, {useEffect, useState} from 'react'
+import "./styles/globals.css";
+// eslint-disable-next-line
+import UAuth from "@uauth/js";
+import { Button } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter,
   Redirect,
   Route,
   RouteProps,
   Switch,
-} from 'react-router-dom'
-import Navhan from './Nav'
-import Stream from './Stream';
+} from "react-router-dom";
+import Navhan from "./Nav";
+import Stream from "./Stream";
+import XplayVids from "./XplayVid";
 //import App from './index'
-require('dotenv').config();
+require("dotenv").config();
 
 const uauth = new UAuth({
   // These can be copied from the bottom of your app's configuration page on unstoppabledomains.com.
@@ -26,186 +27,230 @@ const uauth = new UAuth({
   scope: "openid email wallet",
 
   // This is the url that the auth server will redirect back to after every authorization attempt.
-  redirectUri: "https://0xpr0f-unstoppablestre-7coen3tdkgz.ws-eu27.gitpod.io/callback"!,
+  redirectUri:
+    "https://0xpr0f-unstoppablestre-7coen3tdkgz.ws-eu27.gitpod.io/callback"!,
 
   // This is the url that the auth server will redirect back to after logging out.
-  postLogoutRedirectUri: "https://0xpr0f-unstoppablestre-7coen3tdkgz.ws-eu27.gitpod.io/login"!
-})
+  postLogoutRedirectUri:
+    "https://0xpr0f-unstoppablestre-7coen3tdkgz.ws-eu27.gitpod.io/login"!,
+});
 
-const Home: React.FC<RouteProps> = props => {
-  const [redirectTo, setRedirectTo] = useState<string>()
+const Home: React.FC<RouteProps> = (props) => {
+  const [redirectTo, setRedirectTo] = useState<string>();
 
   useEffect(() => {
     // Try to access the id_token inside `window.localStorage`
     uauth
       .user()
       // User is inside cache, redirect to the profile page.
-      .then(user => {
-        console.log('user ->', user)
-        setRedirectTo('/profile')
+      .then((user) => {
+        console.log("user ->", user);
+        setRedirectTo("/profile");
       })
       // User is not inside cache, redirect to the login page.
-      .catch(error => {
-        console.error(error)
-        setRedirectTo('/login')
-      })
-  }, [])
+      .catch((error) => {
+        console.error(error);
+        setRedirectTo("/login");
+      });
+  }, []);
 
   if (redirectTo) {
-    return <Redirect to={redirectTo} />
+    return <Redirect to={redirectTo} />;
   }
-
-  return <> <h1 className='text-3xl flex flex-wrap justify-center items-center h-screen'>Loading...</h1>
-  <h1 className='text-3xl flex flex-wrap justify-center items-center h-screen'>Logging in...</h1>
-  </>
-}
-
-const Login: React.FC<RouteProps> = props => {
-  const [errorMessage, setErrorMessage] = useState<string | null>(
-    new URLSearchParams(props.location?.search || '').get('error'),
-  )
-
-  const handleLoginButtonClick: React.MouseEventHandler<HTMLButtonElement> =
-    e => {
-      setErrorMessage(null)
-      uauth.login().catch(error => {
-        console.error('login error:', error)
-        setErrorMessage('User failed to login.')
-      })
-    }
 
   return (
     <>
-    <div className='flex justify-center relative top-44 items-center align-middle'>
-      <div>
-     {/*  <h1 className='font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-pink-600 text-8xl align-middle flex justify-center items-center'>UNSTOPPABLE STREAM</h1> */}
-        
-          <br/>
-          <br/>
-          <br/>
-      </div>
+      {" "}
+      <h1 className="text-3xl flex flex-wrap justify-center items-center h-screen">
+        Loading...
+      </h1>
+      <h1 className="text-3xl flex flex-wrap justify-center items-center h-screen">
+        Logging in...
+      </h1>
+    </>
+  );
+};
+
+const Login: React.FC<RouteProps> = (props) => {
+  const [errorMessage, setErrorMessage] = useState<string | null>(
+    new URLSearchParams(props.location?.search || "").get("error")
+  );
+
+  const handleLoginButtonClick: React.MouseEventHandler<HTMLButtonElement> = (
+    e
+  ) => {
+    setErrorMessage(null);
+    uauth.login().catch((error) => {
+      console.error("login error:", error);
+      setErrorMessage("User failed to login.");
+    });
+  };
+
+  return (
+    <>
+      <div className="flex justify-center relative top-44 items-center align-middle">
+        <div>
+          {/*  <h1 className='font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-pink-600 text-8xl align-middle flex justify-center items-center'>UNSTOPPABLE STREAM</h1> */}
+
+          <br />
+          <br />
+          <br />
+        </div>
       </div>
       <br></br>
-  
-    <div className='relative top-44 flex justify-center items-center '>
+      <div className="relative top-44 flex justify-center items-center ">
+        {errorMessage && (
+          <div className="mb-3" style={{ position: "fixed" }}>
+            <strong>Message:</strong> {errorMessage} <br />
+          </div>
+        )}
+      </div>
+      <div className="flex flex-wrap relative top-52 justify-center items-center ">
+        <Button
+          size="large"
+          variant="outlined"
+          style={{ maxWidth: "400px", position: "fixed", maxHeight: "50px" }}
+          color="primary"
+          onClick={handleLoginButtonClick}
+        >
+          <p className="text-2xl">Login with Unstoppable</p>
+        </Button>
+      </div>
 
-    {errorMessage && <div className='mb-3' style={{position : "fixed"}}><strong>Message:</strong> {errorMessage} <br/></div>}
-   
-    </div>
-    
-     <div className='flex flex-wrap relative top-52 justify-center items-center '>
-    <Button size='large' variant="outlined" style={{maxWidth: '400px',position:"fixed", maxHeight: '50px'}} color="primary"  onClick={handleLoginButtonClick} ><p className="text-2xl">Login with Unstoppable</p></Button>
-    </div>
-    <Stream/>
+      <XplayVids />
     </>
-  )
-}
+  );
+};
 
-const Callback: React.FC<RouteProps> = props => {
-  const [redirectTo, setRedirectTo] = useState<string>()
+const Callback: React.FC<RouteProps> = (props) => {
+  const [redirectTo, setRedirectTo] = useState<string>();
 
   useEffect(() => {
     // Try to exchange authorization code for access and id tokens.
     uauth
       .loginCallback()
-     
+
       // Successfully logged and cached user in `window.localStorage`
-      .then(response => {
-        console.log("sucess")
-        console.log('loginCallback ->', response)
-        setRedirectTo('/profile')
+      .then((response) => {
+        console.log("sucess");
+        console.log("loginCallback ->", response);
+        setRedirectTo("/profile");
       })
       // Failed to exchange authorization code for token.
-      .catch(error => {
-        console.error('callback error:', error)
-        setRedirectTo('/login?error=' + error.message)
-      })
-  }, [])
+      .catch((error) => {
+        console.error("callback error:", error);
+        setRedirectTo("/login?error=" + error.message);
+      });
+  }, []);
 
   if (redirectTo) {
-    return <Redirect to={redirectTo} />
+    return <Redirect to={redirectTo} />;
   }
 
-  return <> <h1 className='text-3xl flex flex-wrap justify-center items-center h-screen'>Loading...</h1>
-  <br></br>
-  <h1 className='text-3xl flex flex-wrap justify-center items-center h-screen'>Logging in...</h1>
-  </>
-}
+  return (
+    <>
+      {" "}
+      <h1 className="text-3xl flex flex-wrap justify-center items-center h-screen">
+        Loading...
+      </h1>
+      <br></br>
+      <h1 className="text-3xl flex flex-wrap justify-center items-center h-screen">
+        Logging in...
+      </h1>
+    </>
+  );
+};
 
 const Profile: React.FC<RouteProps> = () => {
-  const [user, setUser] = useState<any>()
-  const [loading, setLoading] = useState(false)
-  const [redirectTo, setRedirectTo] = useState<string>()
+  const [user, setUser] = useState<any>();
+  const [loading, setLoading] = useState(false);
+  const [redirectTo, setRedirectTo] = useState<string>();
 
   useEffect(() => {
     uauth
       .user()
       .then(setUser)
-      .catch(error => {
-        console.error('profile error:', error)
-        setRedirectTo('/login?error=' + error.message)
-      })
-  }, [])
+      .catch((error) => {
+        console.error("profile error:", error);
+        setRedirectTo("/login?error=" + error.message);
+      });
+  }, []);
 
-  const handleLogoutButtonClick: React.MouseEventHandler<HTMLButtonElement> =
-    e => {
-      console.log('logging out!')
-      setLoading(true)
-      uauth
-        .logout({
-          beforeRedirect(url: string) {
-            // alert(url)
-          },
-        })
-        .catch(error => {
-          console.error('profile error:', error)
-          setLoading(false)
-        })
-    }
+  const handleLogoutButtonClick: React.MouseEventHandler<HTMLButtonElement> = (
+    e
+  ) => {
+    console.log("logging out!");
+    setLoading(true);
+    uauth
+      .logout({
+        beforeRedirect(url: string) {
+          // alert(url)
+        },
+      })
+      .catch((error) => {
+        console.error("profile error:", error);
+        setLoading(false);
+      });
+  };
 
   if (redirectTo) {
-    return <Redirect to={redirectTo} />
+    return <Redirect to={redirectTo} />;
   }
 
   if (!user || loading) {
-    return <> <h1 className='text-3xl flex flex-wrap justify-center items-center h-screen'>Loading...</h1>
-    <h1 className='text-3xl flex flex-wrap justify-center items-center h-screen'>Logging out...</h1>
-    </>
+    return (
+      <>
+        {" "}
+        <h1 className="text-3xl flex flex-wrap justify-center items-center h-screen">
+          Loading...
+        </h1>
+        <h1 className="text-3xl flex flex-wrap justify-center items-center h-screen">
+          Logging out...
+        </h1>
+      </>
+    );
   }
-  
 
   return (
     <>
-    {console.log(JSON.stringify(user, null, 2))}
-        
-    <div className = "overflow-visible">
-      <div className='flex flex-row'>
-    <Button variant="outlined" color="primary"  onClick={handleLogoutButtonClick} className="w-28">Logout</Button>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-    <p className='text-xl '>Logged in as:<strong> {user.sub} </strong> with the address: <strong> {user.wallet_address} </strong></p>
-    
-    </div>
-    </div>
-    <div>
-    <Navhan/>
-    </div>
-     {/*<MyApp Component={undefined} pageProps={undefined}/>*/}
+      {console.log(JSON.stringify(user, null, 2))}
+
+      <div className="overflow-visible">
+        <div className="flex flex-row">
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={handleLogoutButtonClick}
+            className="w-28"
+          >
+            Logout
+          </Button>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+          <p className="text-xl ">
+            Logged in as:<strong> {user.sub} </strong> with the address:{" "}
+            <strong> {user.wallet_address} </strong>
+          </p>
+        </div>
+      </div>
+      <div>
+        <Navhan />
+      </div>
+      {/*<MyApp Component={undefined} pageProps={undefined}/>*/}
       {/*<pre>{JSON.stringify(user, null, 2)}</pre>*/}
-      
     </>
-  )
-}
+  );
+};
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-         <Switch>
+      <Switch>
         <Route path="/login" component={Login} />
         <Route path="/callback" component={Callback} />
         <Route path="/profile" component={Profile} />
-         <Route path="/" component={Home} />
+        <Route path="/" component={Home} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById('root'),
-)
+  document.getElementById("root")
+);
