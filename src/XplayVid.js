@@ -78,19 +78,20 @@ class XplayVids extends React.Component {
                 Streamable, Vimeo, Wistia, Mixcloud, DailyMotion and Kaltura.{" "}
               </p>
             </div>
-            <ReactPlayer
-              playIcon={30}
-              playing
-              width="700px"
-              height="400px"
-              style={{
-                margin: "50px",
-                display: "flex",
-                left: "40px",
-              }}
-              controls
-              url={this.state.url}
-            />
+            {this.state.url ? (
+              <ReactPlayer
+                playing
+                width="700px"
+                height="400px"
+                style={{
+                  margin: "50px",
+                  display: "flex",
+                  left: "40px",
+                }}
+                controls
+                url={this.state.url}
+              />
+            ) : null}
           </header>
         </div>
       </>
