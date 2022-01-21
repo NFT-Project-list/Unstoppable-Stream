@@ -177,9 +177,9 @@ export default function Stream() {
   return(
 <>
 
-<div className="">
+<div className="grid place-items-center h-screen">
                   <div className="flex flex-row m-3 text-2xl">
-                    Stream url:{" "}
+                    Stream url: &nbsp;{" "}
                     {stream !== "" && stream !== null ? (
                       <b>
                         {stream}
@@ -201,6 +201,7 @@ export default function Stream() {
 
                   {/*https://www.youtube.com/watch?v=ECKyIeiSBT4     test url */}
                   <button
+                  style={{ backgroundImage: 'linear-gradient(to right,#3f50b5,#cf2a7b)' }}
                     className="rounded  bg-blue-500 py-2 px-8 text-white m-13"
                     onClick={startStream}
                   >
@@ -270,6 +271,7 @@ export default function Stream() {
                   {show ? (
                     <>
                       <button
+                      style={{ backgroundImage: 'linear-gradient(to right,#3f50b5,#cf2a7b)' }}
                         className="rounded bg-blue-500 py-2 px-8 text-white m-13"
                         onClick={getStreamUrl}
                       >
@@ -347,6 +349,7 @@ export default function Stream() {
                       required
                     />
                     <button
+                    style={{ backgroundImage: 'linear-gradient(to right,#3f50b5,#cf2a7b)' }}
                       className="rounded bg-blue-600 py-2 px-12 text-white m-16"
                       onClick={mintStream}
                     >
@@ -363,6 +366,7 @@ export default function Stream() {
                   </h1>
                   {covData !== null ? (
                     <button
+ style={{ backgroundImage: 'linear-gradient(to right,#3f50b5,#cf2a7b)' }}
                       className="rounded bg-blue-500 py-2 px-8 text-white m-13"
                       onClick={() => copyData()}
                     >

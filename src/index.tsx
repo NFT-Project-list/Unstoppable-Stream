@@ -13,13 +13,14 @@ import {
   Switch,
 } from 'react-router-dom'
 import Navhan from './Nav'
+import Stream from './Stream';
 //import App from './index'
 require('dotenv').config();
 
 const uauth = new UAuth({
   // These can be copied from the bottom of your app's configuration page on unstoppabledomains.com.
   clientID: "E3TV8fEapWmt8oRcC5QZQoFZRCI5yKjRqwbpy2RP7rg="!,
-  clientSecret: "YvAjnvttSgXYWaY/qFV1kgdAxCxBzfXWSXOAeb0o6/c="!,
+  clientSecret: "6QkjmhOh8nHnjyosuh7ctXZJtcxOrxx7lAnoYag+Baw="!,
 
   // These are the scopes your app is requesting from the ud server.
   scope: "openid email wallet",
@@ -77,7 +78,7 @@ const Login: React.FC<RouteProps> = props => {
     <>
     <div className='flex justify-center relative top-44 items-center align-middle'>
       <div>
-        <h1 className='font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-pink-600 text-8xl align-middle flex justify-center items-center'>UNSTOPPABLE STREAM</h1>
+     {/*  <h1 className='font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-pink-600 text-8xl align-middle flex justify-center items-center'>UNSTOPPABLE STREAM</h1> */}
         
           <br/>
           <br/>
@@ -95,6 +96,7 @@ const Login: React.FC<RouteProps> = props => {
      <div className='flex flex-wrap relative top-52 justify-center items-center '>
     <Button size='large' variant="outlined" style={{maxWidth: '400px',position:"fixed", maxHeight: '50px'}} color="primary"  onClick={handleLoginButtonClick} ><p className="text-2xl">Login with Unstoppable</p></Button>
     </div>
+    <Stream/>
     </>
   )
 }

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
@@ -23,4 +23,5 @@
   "include": [
     "src"
 , "tailwind.config.js", "src/webpack.config.js"  ]
-}
+
+  }
