@@ -173,6 +173,7 @@ export default function Stream() {
   };
   return (
     <>
+      <br />
       <div className="grid place-items-center h-screen">
         <div className="flex flex-row  text-2xl">
           Stream url: &nbsp;{" "}
@@ -232,7 +233,7 @@ export default function Stream() {
               />
             </p>{" "}
             <p className=" mb-3 text-2xl">
-              ☝️ Input the above in a streaming software like OBS
+              ☝️ Input the above in a streaming software like OBS.
             </p>
             <p className=" mb-3 text-xl">
               - If you are finding things difficult check the docs{" "}
@@ -241,8 +242,12 @@ export default function Stream() {
                 href="https://www.techadvisor.com/how-to/game/use-obs-to-live-stream-3676910/"
                 target="_blank"
               >
-                here
+                here.
               </a>
+            </p>
+            <p className="mb-3 text-xl">
+              - please wait 5 minutes after stream so livepeer can process the
+              video.
             </p>
             <p className=" flex flex-row text-2xl mb-2">
               <p> stream: &nbsp;</p> https://cdn.livepeer.com/hls/
@@ -258,10 +263,6 @@ export default function Stream() {
                   );
                 }}
               />
-            </p>
-            <p className="text-xl">
-              {" "}
-              - Put The above in the lounge METAVERSE to stream 👆{" "}
             </p>
           </div>
         ) : null}

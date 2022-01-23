@@ -24,15 +24,13 @@ const uauth = new UAuth({
   clientSecret: "6QkjmhOh8nHnjyosuh7ctXZJtcxOrxx7lAnoYag+Baw="!,
 
   // These are the scopes your app is requesting from the ud server.
-  scope: "openid email wallet",
+  scope: "openid wallet",
 
   // This is the url that the auth server will redirect back to after every authorization attempt.
-  redirectUri:
-    "https://0xpr0f-unstoppablestre-7coen3tdkgz.ws-eu27.gitpod.io/callback"!,
+  redirectUri: "http://localhost:3000/callback"!,
 
   // This is the url that the auth server will redirect back to after logging out.
-  postLogoutRedirectUri:
-    "https://0xpr0f-unstoppablestre-7coen3tdkgz.ws-eu27.gitpod.io/login"!,
+  postLogoutRedirectUri: "http://localhost:3000/login"!,
 });
 
 const Home: React.FC<RouteProps> = (props) => {
@@ -90,7 +88,9 @@ const Login: React.FC<RouteProps> = (props) => {
     <>
       <div className="flex justify-center relative top-44 items-center align-middle">
         <div>
-          {/*  <h1 className='font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-pink-600 text-8xl align-middle flex justify-center items-center'>UNSTOPPABLE STREAM</h1> */}
+          <h1 className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-pink-600 text-8xl align-middle flex justify-center items-center">
+            UNSTOPPABLE STREAM
+          </h1>
 
           <br />
           <br />
@@ -116,8 +116,6 @@ const Login: React.FC<RouteProps> = (props) => {
           <p className="text-2xl">Login with Unstoppable</p>
         </Button>
       </div>
-
-      <XplayVids />
     </>
   );
 };
@@ -218,6 +216,7 @@ const Profile: React.FC<RouteProps> = () => {
       <div className="overflow-visible">
         <div className="flex flex-row">
           <Button
+            style={{ position: "absolute", left: "90%", margin: "3px" }}
             variant="outlined"
             color="primary"
             onClick={handleLogoutButtonClick}
@@ -227,8 +226,7 @@ const Profile: React.FC<RouteProps> = () => {
           </Button>
           <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
           <p className="text-xl ">
-            Logged in as:<strong> {user.sub} </strong> with the address:{" "}
-            <strong> {user.wallet_address} </strong>
+            Logged in as:<strong> {user.sub} </strong>
           </p>
         </div>
       </div>

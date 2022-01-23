@@ -10,25 +10,31 @@ function Navhan() {
         <div
           className="App overflow-visible"
           style={{
-           
             display: "flex",
-           
             alignItems: "center",
-            justifyContent: "space-between",
+            justifyContent: "center",
           }}
         >
           <div>{/*  <img width={200} height={200} src="/Meta.png" /> */}</div>
 
           <div>
             <Link
-              style={{ padding: "0rem 3rem" }}
-              className="text-xl text-blue-500 "
+              style={{
+                padding: "0rem 3rem",
+                borderWidth: "7px",
+                borderColor: "#cf2a7b",
+              }}
+              className="text-xl text-blue-500 mr-28"
               to="./XplayVid"
             >
               Play Vids
             </Link>
             <Link
-              style={{ padding: "0rem 3rem" }}
+              style={{
+                padding: "0rem 3rem",
+                borderWidth: "7px",
+                borderColor: "#cf2a7b",
+              }}
               className="text-xl text-blue-500 "
               to="./Stream"
             >
@@ -38,8 +44,9 @@ function Navhan() {
         </div>
         <div>
           <Switch>
+            <Route path="/profile/" component={Stream}></Route>
             <Route path="/XplayVid" component={XplayVids}></Route>
-            <Route path="/Stream" component={Stream}  exact></Route>
+            <Route path="/Stream" component={Stream} exact></Route>
           </Switch>
         </div>
       </BrowserRouter>

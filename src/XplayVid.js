@@ -26,6 +26,7 @@ class XplayVids extends React.Component {
   render() {
     return (
       <>
+        <br />
         <div id="reactPlayer" className="grid place-items-center reactPlayer">
           <header classame="grid place-items-center ReactP">
             <div className="grid place-items-center ">
