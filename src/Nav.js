@@ -44,9 +44,9 @@ function Navhan() {
         </div>
         <div>
           <Switch>
-            <Route path="/profile/" component={Stream}></Route>
+            <Route path="/profile/" component={Stream} exact></Route>
             <Route path="/XplayVid" component={XplayVids}></Route>
-            <Route path="/Stream" component={Stream} exact></Route>
+            <Route path="/Stream" component={Stream}></Route>
           </Switch>
         </div>
       </BrowserRouter>

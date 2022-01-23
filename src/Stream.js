@@ -3,7 +3,7 @@ import ReactPlayer from "react-player";
 import { AiOutlineCopy } from "react-icons/ai";
 import { useState } from "react";
 import axios from "axios";
-
+import "./index";
 //import ShakaPlayer from "shaka-player-react";
 
 import CeramicClient from "@ceramicnetwork/http-client";
@@ -13,6 +13,7 @@ import CeramicClient from "@ceramicnetwork/http-client";
 //import { NFTStorage } from "nft.storage";
 
 import Livepeer from "livepeer-nodejs";
+import { Profile } from "./index";
 
 export default function Stream() {
   const Livepeer_apiKey = "b2172553-2098-4b0c-b679-3dffba1409c8";
@@ -63,6 +64,7 @@ export default function Stream() {
     ],
     record: true,
   };
+
   const startStream = () => {
     livepeerObject.Stream.create(content).then((res) => {
       console.log("stream started");
@@ -171,6 +173,7 @@ export default function Stream() {
     // eslint-disable-next-line
     const stream = await ceramic.loadStream(ceramicStream);
   };
+
   return (
     <>
       <br />

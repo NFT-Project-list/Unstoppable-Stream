@@ -3,7 +3,9 @@ import ReactDOM from "react-dom";
 import "./styles/globals.css";
 // eslint-disable-next-line
 import UAuth from "@uauth/js";
+import ClockLoader from "react-spinners/ClockLoader";
 import { Button } from "@material-ui/core";
+
 import React, { useEffect, useState } from "react";
 import {
   BrowserRouter,
@@ -14,14 +16,27 @@ import {
 } from "react-router-dom";
 import Navhan from "./Nav";
 import Stream from "./Stream";
-import XplayVids from "./XplayVid";
+
 //import App from './index'
 require("dotenv").config();
 
 const uauth = new UAuth({
+  //   https://udstream.netlify.app/
   // These can be copied from the bottom of your app's configuration page on unstoppabledomains.com.
+  clientID: "E3TV8fEapWmt8oRcC5QZQoFZRCI5yKjRqwbpy2RP7rg="!,
+  clientSecret: "6QkjmhOh8nHnjyosuh7ctXZJtcxOrxx7lAnoYag+Baw="!,
+
+  // These are the scopes your app is requesting from the ud server.
+  scope: "openid wallet",
+
+  // This is the url that the auth server will redirect back to after every authorization attempt.
+  redirectUri: "http://localhost:3000/callback"!,
+
+  // This is the url that the auth server will redirect back to after logging out.
+  postLogoutRedirectUri: "http://localhost:3000/login"!,
+  /*
   clientID: "KKr8cmv8O0y5XUocYJq5xv0j5tvYsIeQBVaPDB3IH+4="!,
-  clientSecret: "RqJQ0jMvRN+vzzVi6+vMyC9GRedPbX0uq8K5T7acIBg="!,
+  clientSecret: "riloMQamzn1dTrcSMP5UfWHlWG6OrebciSihFvNahBk="!,
 
   // These are the scopes your app is requesting from the ud server.
   scope: "openid wallet",
@@ -31,6 +46,8 @@ const uauth = new UAuth({
 
   // This is the url that the auth server will redirect back to after logging out.
   postLogoutRedirectUri: "https://udstream.netlify.app/login"!,
+
+  */
 });
 
 const Home: React.FC<RouteProps> = (props) => {
@@ -148,26 +165,28 @@ const Callback: React.FC<RouteProps> = (props) => {
   return (
     <>
       {" "}
-      <h1 className="text-3xl flex flex-wrap justify-center items-center h-screen">
-        Loading...
-      </h1>
       <br></br>
-      <h1 className="text-3xl flex flex-wrap justify-center items-center h-screen">
-        Logging in...
+      <h1 className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-pink-600  text-3xl flex flex-wrap justify-center items-center h-screen">
+        <ClockLoader color="#007aff" loading={true} size={40} />
+        &nbsp; &nbsp; &nbsp; Logging in...
       </h1>
     </>
   );
 };
 
-const Profile: React.FC<RouteProps> = () => {
+export const Profile: React.FC<RouteProps> = () => {
+  var address;
+
   const [user, setUser] = useState<any>();
   const [loading, setLoading] = useState(false);
+
   const [redirectTo, setRedirectTo] = useState<string>();
 
   useEffect(() => {
     uauth
       .user()
       .then(setUser)
+
       .catch((error) => {
         console.error("profile error:", error);
         setRedirectTo("/login?error=" + error.message);
@@ -199,15 +218,15 @@ const Profile: React.FC<RouteProps> = () => {
     return (
       <>
         {" "}
-        <h1 className="text-3xl flex flex-wrap justify-center items-center h-screen">
-          Loading...
-        </h1>
-        <h1 className="text-3xl flex flex-wrap justify-center items-center h-screen">
-          Logging out...
+        <h1 className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-pink-600 text-3xl flex flex-wrap justify-center items-center h-screen">
+          <ClockLoader color="#007aff" loading={true} size={40} />
+          &nbsp; &nbsp; &nbsp; Logging out...
         </h1>
       </>
     );
   }
+
+  address = user.wallet_address;
 
   return (
     <>
@@ -230,6 +249,7 @@ const Profile: React.FC<RouteProps> = () => {
           </p>
         </div>
       </div>
+      {console.log(address)}
       <div>
         <Navhan />
       </div>
