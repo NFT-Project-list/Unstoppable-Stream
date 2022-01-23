@@ -20,17 +20,17 @@ require("dotenv").config();
 
 const uauth = new UAuth({
   // These can be copied from the bottom of your app's configuration page on unstoppabledomains.com.
-  clientID: "E3TV8fEapWmt8oRcC5QZQoFZRCI5yKjRqwbpy2RP7rg="!,
-  clientSecret: "6QkjmhOh8nHnjyosuh7ctXZJtcxOrxx7lAnoYag+Baw="!,
+  clientID: "KKr8cmv8O0y5XUocYJq5xv0j5tvYsIeQBVaPDB3IH+4="!,
+  clientSecret: "RqJQ0jMvRN+vzzVi6+vMyC9GRedPbX0uq8K5T7acIBg="!,
 
   // These are the scopes your app is requesting from the ud server.
   scope: "openid wallet",
 
   // This is the url that the auth server will redirect back to after every authorization attempt.
-  redirectUri: "http://localhost:3000/callback"!,
+  redirectUri: "https://udstream.netlify.app/callback"!,
 
   // This is the url that the auth server will redirect back to after logging out.
-  postLogoutRedirectUri: "http://localhost:3000/login"!,
+  postLogoutRedirectUri: "https://udstream.netlify.app/login"!,
 });
 
 const Home: React.FC<RouteProps> = (props) => {
