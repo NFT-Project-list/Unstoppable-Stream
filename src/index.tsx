@@ -1,4 +1,4 @@
-import ReactDOM from "react-dom";
+import ReactDOM, { render } from "react-dom";
 //import './index.css'
 import "./styles/globals.css";
 // eslint-disable-next-line
@@ -34,20 +34,6 @@ const uauth = new UAuth({
 
   // This is the url that the auth server will redirect back to after logging out.
   postLogoutRedirectUri: "http://localhost:3000/login"!,
-  /*
-  clientID: "KKr8cmv8O0y5XUocYJq5xv0j5tvYsIeQBVaPDB3IH+4="!,
-  clientSecret: "riloMQamzn1dTrcSMP5UfWHlWG6OrebciSihFvNahBk="!,
-
-  // These are the scopes your app is requesting from the ud server.
-  scope: "openid wallet",
-
-  // This is the url that the auth server will redirect back to after every authorization attempt.
-  redirectUri: "https://udstream.netlify.app/callback"!,
-
-  // This is the url that the auth server will redirect back to after logging out.
-  postLogoutRedirectUri: "https://udstream.netlify.app/login"!,
-
-  */
 });
 
 const Home: React.FC<RouteProps> = (props) => {
@@ -178,6 +164,7 @@ export const Profile: React.FC<RouteProps> = () => {
   var address;
 
   const [user, setUser] = useState<any>();
+
   const [loading, setLoading] = useState(false);
 
   const [redirectTo, setRedirectTo] = useState<string>();
@@ -225,9 +212,7 @@ export const Profile: React.FC<RouteProps> = () => {
       </>
     );
   }
-
   address = user.wallet_address;
-
   return (
     <>
       {console.log(JSON.stringify(user, null, 2))}
