@@ -8,10 +8,10 @@ import "./index";
 
 import CeramicClient from "@ceramicnetwork/http-client";
 //import ShakaPlayer from "shaka-player-react";
-
-//import { Blob } from "nft.storage";
-//import { NFTStorage } from "nft.storage";
-
+/*
+import { Blob } from "nft.storage";
+import { NFTStorage } from "nft.storage";
+*/
 import Livepeer from "livepeer-nodejs";
 import { Profile } from "./index";
 
@@ -135,8 +135,8 @@ export default function Stream() {
       //  setDescription("");
       //  setAddress("");
       setNftUrl(res.data.transaction_external_url);
-
-      /*  const client = new NFTStorage({
+      /*
+      const client = new NFTStorage({
         token: process.env.NEXT_PUBLIC_NFT_STORAGE_API_KEY,
       });
 
@@ -289,11 +289,8 @@ export default function Stream() {
             <>
               <br />
 
-              <ReactPlayer
-                controls
-                url={`https://cdn.livepeer.com/hls/${data.playbackId}/index.m3u8`}
-                playing={true}
-              />
+              <ReactPlayer controls url={stream} playing={true} />
+              {console.log(stream)}
               <br />
               <a
                 rel="noreferrer"
